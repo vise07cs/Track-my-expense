@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard | Expense Tracker</title>
+  <style>
+    body { font-family: Arial; background: #f4f6f8; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
+    input, select, button { width: 100%; padding: 10px; margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    table, th, td { border: 1px solid #ccc; }
+    th, td { padding: 10px; text-align: left; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Welcome, User!</h2>
+
+    <h3>Add Expense</h3>
+    <form id="expenseForm">
+      <input type="number" id="amount" placeholder="Amount" required>
+      <input type="text" id="description" placeholder="Description" required>
+      <select id="category" required>
+        <option value="">Select Category</option>
+        <option value="Food">Food</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Salary">Salary</option>
+        <option value="Travel">Travel</option>
+        <option value="Others">Others</option>
+      </select>
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <h3>My Expenses</h3>
+    <table>
+      <thead>
+        <tr><th>Amount</th><th>Description</th><th>Category</th><th>Date</th></tr>
+      </thead>
+      <tbody id="expenseList"></tbody>
+    </table>
+  </div>
+
+
+
+  <script src="dashboard.js"></script>
+
+  
+</body>
+</html>
