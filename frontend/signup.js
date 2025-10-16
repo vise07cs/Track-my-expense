@@ -22,6 +22,9 @@
       if (response.status === 201) {
         alert('✅ ' + data.message);
         form.reset(); // Clear form after success
+         // Redirect to login page
+         window.location.href = "login.html";
+
       } else {
         alert('⚠️ ' + data.message);
       }
