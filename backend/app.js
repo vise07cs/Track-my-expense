@@ -10,7 +10,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // API routes
-app.use('/signup', userRoutes);
+app.use('/api/users', userRoutes);
 
 // Sync DB
 
