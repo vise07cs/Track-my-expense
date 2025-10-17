@@ -1,5 +1,9 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
+const jwt = require('jsonwebtoken');
+
+
+const JWT_SECRET="my-secret-key";
 
 
 //signup controller
@@ -54,9 +58,14 @@ const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
 
+
+    // Generate JWT
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '1d' });
+
     // Success
     res.status(200).json({
       message: 'Login successful',
+      token,
       user: { id: user.id, name: user.name, email: user.email }
     });
 

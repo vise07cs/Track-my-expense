@@ -16,6 +16,10 @@
         const data = await response.json();
 
         if (response.status === 200) {
+          
+        localStorage.setItem('token', data.token);
+
+
           alert('✅ ' + data.message);
           // Redirect to dashboard or homepage after login
           window.location.href = "dashboard.html";
