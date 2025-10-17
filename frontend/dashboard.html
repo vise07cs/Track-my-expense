@@ -6,10 +6,29 @@
   <style>
     body { font-family: Arial; background: #f4f6f8; padding: 20px; }
     .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
-    input, select, button { width: 100%; padding: 10px; margin-bottom: 10px; }
+    input, select, button { width: 50%; padding: 10px; margin-bottom: 10px; }
     table { width: 100%; border-collapse: collapse; margin-top: 20px; }
     table, th, td { border: 1px solid #ccc; }
     th, td { padding: 10px; text-align: left; }
+
+     .premium-btn {
+    padding: 10px 20px;
+    background-color: rgb(53, 197, 40);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 360px;
+    align-items: center;
+  }
+
+  .premium-btn:hover {
+    background-color: rgb(72, 105, 21);
+  }
+
+
   </style>
 </head>
 <body>
@@ -42,7 +61,26 @@
 
 
 
+  <div class="newContainer">
+  <button id="buyPremiumBtn" class="premium-btn">Buy Premium Membership</button>
+
+  </div>
+
+    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
+
+<script>
+    const cashfree = Cashfree({
+        mode: "sandbox"
+    });
+</script>
+
+
   <script src="dashboard.js"></script>
+
+
+
+
+
 
   
 </body>

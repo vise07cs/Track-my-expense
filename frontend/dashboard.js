@@ -1,6 +1,9 @@
 const expenseForm = document.getElementById('expenseForm');
 const expenseList = document.getElementById('expenseList');
 
+const buyPremiumBtn = document.getElementById('buyPremiumBtn');
+
+
 // Get token from localStorage
 const token = localStorage.getItem('token');
 if (!token) {
@@ -114,3 +117,48 @@ expenseForm.addEventListener('submit', async (e) => {
     console.error(err);
   }
 });
+
+buyPremiumBtn.addEventListener('click',async  () => {
+  // For now, just open a placeholder / alert
+  // alert("Premium Membership feature coming soon! Cashfree integration will be added later.");
+
+  try {
+    // 1️⃣ Call backend to create an order and get payment_session_id
+    const response = await fetch('http://localhost:5000/api/create-order', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` // logged-in user token
+      },
+      body: JSON.stringify({ amount: 500 }) // example amount
+    });
+    const data = await response.json();
+    const paymentSessionId = data.paymentSessionId;
+
+    // 2️⃣ Initialize checkout options
+    const checkoutOptions = {
+      paymentSessionId: paymentSessionId,
+      redirectTarget: "_self" // stays on same page after payment
+    };
+
+    // 3️⃣ Trigger Cashfree checkout
+    await cashfree.checkout(checkoutOptions);
+
+  } catch (err) {
+    console.error("Error:", err);
+    alert("Failed to start payment. Try again.");
+  }
+
+
+
+
+
+
+
+
+
+  // Optional: open a placeholder page or modal
+  // window.location.href = 'premium.html';
+});
+
+

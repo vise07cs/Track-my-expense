@@ -4,6 +4,7 @@ const cors = require('cors');
 const sequelize = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const expenseRoutes = require('./routes/expenseRoutes');
+const paymentRoutes=require("./routes/paymentRoutes")
 
 const User = require('./models/userModel');
 
@@ -16,6 +17,8 @@ app.use(bodyParser.json());
 app.use('/api/users', userRoutes);
 
 app.use('/api/expenses', expenseRoutes);
+
+app.use("/api",paymentRoutes)
 
 // Sync DB
 

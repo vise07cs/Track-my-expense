@@ -4,7 +4,7 @@ const User = require('../models/userModel');
 // Add new expense
 const addExpense = async (req, res) => {
   try {
-    console.log("Request Body:", req.body); // Debugging line
+    // console.log("Request Body:", req.body); // Debugging line
 
     const {  amount, description, category } = req.body;
     const { userId } = req.user // Get userId from authenticated user
@@ -12,12 +12,12 @@ const addExpense = async (req, res) => {
     if (!amount || !description || !category || !userId) {
       return res.status(400).json({ message: 'All fields are required' });
     }
-    console.log("User ID from body:", userId); // Debugging line
+    // console.log("User ID from body:", userId); // Debugging line
 
     const expense = await Expense.create({ userId, amount, description, category });
     res.status(201).json({ message: 'Expense added successfully', expense });
 
-    console.log("Expense created:", expense); // Debugging line
+    // console.log("Expense created:", expense); // Debugging line
 
   } catch (error) {
     console.error(error);
